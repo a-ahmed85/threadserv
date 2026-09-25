@@ -46,7 +46,18 @@ class Router:
         self._routes: dict[str, dict[str, Handler]] = {}
 
     def register(self, method: str, path: str, handler: Handler) -> None:
-        raise NotImplementedError
+        self._routes.setdefault(path, {})[method.upper()] = handler
 
     def dispatch(self, request: ParsedRequest, ctx: RequestContext) -> HttpResponse:
-        raise NotImplementedError
+        methods = self._routes.get(request.path)
+        if methods is None:
+            raise NotFound(f"no route registered for path {request.path!r}")
+
+        handler = methods.get(request.method.upper())
+        if handler is None:
+            raise MethodNotAllowed(
+                f"method {request.method!r} not allowed for path {request.path!r}",
+                allowed_methods=sorted(methods),
+            )
+
+        return handler(request, ctx)
