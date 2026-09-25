@@ -1,0 +1,14 @@
+[project]
+name = "threadserve"
+version = "0.1.0"
+description = "A thread-per-connection HTTP server with a hand-rolled parser, built as a learning project."
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+bench = ["psutil>=5.9"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
