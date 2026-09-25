@@ -1,4 +1,4 @@
-# ThreadServe
+# ThreadServ
 
 A thread-per-connection HTTP server written from scratch in pure Python (stdlib only) — including a hand-rolled HTTP/1.1 parser — built to understand two things end-to-end:
 
