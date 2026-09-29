@@ -1,5 +1,5 @@
 [project]
-name = "threadserve"
+name = "threadserv"
 version = "0.1.0"
 description = "A thread-per-connection HTTP server with a hand-rolled parser, built as a learning project."
 requires-python = ">=3.11"
